@@ -57,10 +57,6 @@ header{position:sticky;top:0;z-index:100;padding:16px 0}
 .logo b{color:var(--gold-hot)}
 .nav-pills{display:flex;gap:6px;background:rgba(18,26,46,.7);border:1px solid var(--line);border-radius:100px;padding:6px;backdrop-filter:blur(8px)}
 .npill{position:relative;overflow:hidden;text-decoration:none;color:var(--ink-soft);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:8px 16px;border-radius:100px;border:1px solid transparent;transition:.3s var(--ease)}
-.npill .stack{display:block;transition:transform .35s var(--ease)}
-.npill .stack span{display:block}
-.npill .stack .dup{color:var(--gold-hot)}
-.npill:hover .stack{transform:translateY(-100%)}
 .npill:hover{color:var(--ink);border-color:rgba(231,185,78,.5)}
 .npill.active{border-color:var(--gold);color:var(--gold-hot)}
 .menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--ink);font-size:20px;border-radius:100px;width:44px;height:44px;cursor:pointer}
@@ -245,10 +241,10 @@ footer{max-width:1120px;margin:0 auto;padding:0 22px 40px}
   <div class="nav-bar">
     <a class="logo" href="#top">CALVIN<b>SKUNNIES</b></a>
     <nav class="nav-pills" id="navPills">
-      <a class="npill" href="#top"><span class="stack"><span>About</span><span class="dup">About</span></span></a>
-      <a class="npill" href="#skills"><span class="stack"><span>Skills</span><span class="dup">Skills</span></span></a>
-      <a class="npill" href="#experience"><span class="stack"><span>Experience</span><span class="dup">Experience</span></span></a>
-      <a class="npill" href="#contact"><span class="stack"><span>Contact</span><span class="dup">Contact</span></span></a>
+      <a class="npill" href="#top">About</a>
+      <a class="npill" href="#skills">Skills</a>
+      <a class="npill" href="#experience">Experience</a>
+      <a class="npill" href="#contact">Contact</a>
     </nav>
     <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
   </div>
@@ -276,7 +272,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 22px 40px}
               </ul>
             </span>
           </div>
-          <p class="lead">Three years of turning data into dashboards, pipelines, and communities. From crypto research at <b>Reform DAO</b> to automating reporting that cut SLA from 8 hours to 1 hour, and moderating Web3 communities on <b>Monad</b> and <b>Edge Matrix Chain</b>. Always learning, always shipping.</p>
+          <p class="lead">A few years spent turning raw data into dashboards, pipelines, and communities. Crypto research at <b>Reform DAO</b>, automating reports that brought SLA from 8 hours down to 1, and keeping the conversation going across <b>Monad</b> and <b>Edge Matrix Chain</b>. Always learning, always shipping.</p>
           <div class="cta-row">
             <a class="btn primary" href="#experience">See the track record <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             <a class="btn ghost" href="#contact">Get in touch</a>
@@ -323,12 +319,12 @@ footer{max-width:1120px;margin:0 auto;padding:0 22px 40px}
         <div class="watermark">Skills</div>
       </div>
       <div class="skills">
-        <div class="scard reveal"><div class="k">Data Analytics</div><div class="v">SQL, Python, Power BI — turning raw data into clear, data-driven insights</div></div>
-        <div class="scard blue reveal" data-delay="1"><div class="k">Automation</div><div class="v">GitHub Actions, AI agents, reporting pipelines that cut SLA from 8h to 1h</div></div>
-        <div class="scard reveal" data-delay="2"><div class="k">Machine Learning</div><div class="v">Statistics, ML models, forecasting for markets and business</div></div>
-        <div class="scard blue reveal" data-delay="3"><div class="k">Community & Moderation</div><div class="v">Edge Matrix Chain &amp; Monad Discord — onboarding, engagement, sentiment</div></div>
-        <div class="scard reveal" data-delay="4"><div class="k">Research</div><div class="v">Crypto market deep-dives, token &amp; project analysis, market health tracking</div></div>
-        <div class="scard blue reveal" data-delay="5"><div class="k">Reporting</div><div class="v">Dashboards, KPIs, stakeholder-ready summaries leadership acts on</div></div>
+        <div class="scard reveal"><div class="k">Data Analytics</div><div class="v">SQL, Python, Power BI — turning raw numbers into clear, practical insights</div></div>
+        <div class="scard blue reveal" data-delay="1"><div class="k">Automation</div><div class="v">GitHub Actions and AI agents that cut reporting SLA from 8h to 1h</div></div>
+        <div class="scard reveal" data-delay="2"><div class="k">Machine Learning</div><div class="v">Statistics and ML models for forecasting markets and business outcomes</div></div>
+        <div class="scard blue reveal" data-delay="3"><div class="k">Community &amp; Moderation</div><div class="v">Onboarding, engagement, and sentiment across Edge Matrix Chain and Monad Discord</div></div>
+        <div class="scard reveal" data-delay="4"><div class="k">Research</div><div class="v">Crypto deep-dives, token and project analysis, real-time market health tracking</div></div>
+        <div class="scard blue reveal" data-delay="5"><div class="k">Reporting</div><div class="v">Dashboards, KPIs, and summaries leadership actually acts on</div></div>
       </div>
     </div>
   </section>
@@ -336,7 +332,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 22px 40px}
   <!-- EXPERIENCE -->
   <div class="badge-row"><span class="badge">The Track Record</span></div>
   <section id="experience">
-    <div class="panel head-card reveal"><h2>Where I've made moves.</h2><div class="sub">Impact-first, not strictly chronological.</div></div>
+    <div class="panel head-card reveal"><h2>Where I've made moves.</h2><div class="sub">Ordered by impact, not by the calendar.</div></div>
     <div class="swipe-hint">swipe →</div>
     <div class="xp-track">
 
@@ -345,7 +341,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 22px 40px}
           <div>
             <div class="date">Jan 2025 — Feb 2026 · Done</div>
             <div class="co">Reform DAO<small>Research Analyst · Hofida Limited · Remote</small></div>
-            <p>Deep-dive research on upcoming projects, listed coins, and market updates. Built interactive dashboards tracking project performance and market health in real-time, and automated data extraction across multiple exchanges.</p>
+            <p>Deep research on upcoming projects, listed coins, and market moves. Built interactive dashboards that track project performance and market health live, and automated data extraction across multiple exchanges.</p>
             <div class="metrics">
               <span class="metric"><b>4</b> dashboards built</span>
               <span class="metric"><b>7</b> exchanges automated</span>
@@ -361,7 +357,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 22px 40px}
           <div>
             <div class="date">Jan 2024 — Aug 2024 · Done</div>
             <div class="co">FWD Insurance<small>Data Analytics &amp; Insight · Jakarta</small></div>
-            <p>Analyzed and visualized complex datasets using SQL, Excel, and Power BI. Optimized analytics workflows and facilitated UAT for data and campaign initiatives to ensure high-quality system deployments.</p>
+            <p>Analyzed and visualized complex datasets with SQL, Excel, and Power BI. Streamlined analytics workflows and ran UAT for data and campaign rollouts to keep deployments clean and reliable.</p>
             <div class="metrics">
               <span class="metric">SLA <b>5h → 1h</b></span>
               <span class="metric">sales <b>+30%</b></span>
@@ -377,7 +373,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 22px 40px}
           <div>
             <div class="date">Sep 2024 — Dec 2024 · Done</div>
             <div class="co">Shopee International<small>Business Development · Jakarta</small></div>
-            <p>Coordinated daily updates for the Shopee Supermarket page and analyzed exclusive brands and suppliers to provide insights on product performance and market trends.</p>
+            <p>Kept the Shopee Supermarket page accurate and on time, and dug into exclusive brands and suppliers to surface product performance and market trends.</p>
             <div class="metrics">
               <span class="metric"><b>20+</b> brands analyzed</span>
               <span class="metric">daily content ops</span>
@@ -393,7 +389,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 22px 40px}
           <div>
             <div class="date">Web3 · Community</div>
             <div class="co">Edge Matrix Chain<small>Discord Moderator · Web3</small></div>
-            <p>Managed community channels, enforced guidelines, resolved disputes, and onboarded new members to maintain a healthy and active ecosystem.</p>
+            <p>Ran community channels, kept guidelines in check, sorted out disputes, and onboarded newcomers to keep the ecosystem healthy and active.</p>
             <div class="metrics">
               <span class="metric">moderation</span>
               <span class="metric">community onboarding</span>
@@ -409,7 +405,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 22px 40px}
           <div>
             <div class="date">Web3 · Community</div>
             <div class="co">Monad<small>Community Contributor · LocalNads</small></div>
-            <p>Active contributor in the Monad ecosystem — driving engagement, supporting events, and helping grow the community from the ground up.</p>
+            <p>Active in the Monad ecosystem from the start, driving engagement, supporting events, and helping the community grow from the ground up.</p>
             <div class="metrics">
               <span class="metric">engagement</span>
               <span class="metric">event support</span>
@@ -425,7 +421,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 22px 40px}
           <div>
             <div class="date">Founder · Project</div>
             <div class="co">SimplyVest<small>Founder · Solana token vesting protocol</small></div>
-            <p>Built a token vesting protocol on Solana with PDA vaults and cliff, linear, and milestone streams — tested with 147+ tests for reliability.</p>
+            <p>Built a token vesting protocol on Solana with PDA vaults and cliff, linear, and milestone streams, hardened by 147+ tests.</p>
             <div class="metrics">
               <span class="metric"><b>147+</b> tests</span>
               <span class="metric">PDA vaults</span>
@@ -447,13 +443,13 @@ footer{max-width:1120px;margin:0 auto;padding:0 22px 40px}
         <div>
           <h2>That's<br>the tour.</h2>
           <div class="h3">On the timeline, I'm just <b>CalvinSkunnies.</b></div>
-          <p>If you're hiring a data analyst, building a Web3 community, or need someone who can bridge both worlds — let's talk.</p>
+          <p>Hiring a data analyst, building a Web3 community, or looking for someone who can bridge both worlds? Let's talk.</p>
           <div class="cta-row">
             <a class="btn primary" href="mailto:calvinsntf@gmail.com">Email <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             <!-- Replace socials below with your real handles -->
             <a class="btn ghost" href="https://x.com/calvinskunnies" target="_blank" rel="noopener">X</a>
             <a class="btn ghost" href="https://t.me/calvinskunnies" target="_blank" rel="noopener">Telegram</a>
-            <a class="btn ghost" href="https://www.linkedin.com/in/calvin-sutio" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn ghost" href="https://www.linkedin.com/in/calvin-sutio-aa7278201/" target="_blank" rel="noopener">LinkedIn</a>
           </div>
         </div>
         <div>
@@ -467,8 +463,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 22px 40px}
 <footer>
   <div class="foot-pill">
     <span><b>CALVINSKUNNIES</b> · Data Analyst · Web3 Community · Indonesia</span>
-    <span>© 2026 · @calvinskunnies</span>
-  </div>
+    <span>© 2026 · @calvinskunnies</span>  </div>
 </footer>
 
 <button class="btt" id="btt" aria-label="Back to top">↑</button>
