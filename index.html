@@ -55,6 +55,7 @@ nav{position:sticky;top:0;z-index:100;padding:20px 0;backdrop-filter:blur(16px);
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-dim);border:1px solid rgba(167,139,250,.2);color:var(--accent-light);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:28px}
 .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s ease infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-grid{display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:center}
 .hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(42px,7vw,72px);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:20px}
 .hero h1 .accent{color:var(--accent)}
 .hero h1 .dim{color:var(--text-dim)}
@@ -65,9 +66,9 @@ nav{position:sticky;top:0;z-index:100;padding:20px 0;backdrop-filter:blur(16px);
 .hero-role .flip ul{list-style:none;animation:flip 10s var(--ease) infinite}
 .hero-role .flip li{height:1.4em;line-height:1.4em}
 @keyframes flip{0%,20%{transform:translateY(0)}25%,45%{transform:translateY(-1.4em)}50%,70%{transform:translateY(-2.8em)}75%,100%{transform:translateY(-4.2em)}}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:48px}
-.hero-image{display:flex;justify-content:center;margin-top:48px}
-.hero-image img{width:200px;height:200px;border-radius:50%;object-fit:cover;border:2px solid var(--border);box-shadow:0 0 60px rgba(167,139,250,.15)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-image{display:flex;justify-content:center;align-items:center}
+.hero-image img{width:240px;height:240px;border-radius:50%;object-fit:cover;border:2px solid var(--border);box-shadow:0 0 60px rgba(167,139,250,.15)}
 
 /* ---------- BUTTONS ---------- */
 .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:14px;padding:12px 24px;border-radius:10px;transition:all .2s var(--ease);border:1px solid transparent}
@@ -96,7 +97,7 @@ nav{position:sticky;top:0;z-index:100;padding:20px 0;backdrop-filter:blur(16px);
 
 /* ---------- EXPERIENCE ---------- */
 .xp-list{display:flex;flex-direction:column;gap:16px;margin-top:28px}
-.xp-card{background:var(--surface);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:32px;display:grid;grid-template-columns:1fr 280px;gap:32px;align-items:center;transition:all .3s var(--ease)}
+.xp-card{background:var(--surface);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:32px;display:grid;grid-template-columns:1fr 260px;gap:32px;align-items:center;transition:all .3s var(--ease)}
 .xp-card:hover{border-color:var(--border)}
 .xp-date{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
 .xp-role{font-size:13px;color:var(--sky);font-weight:500;margin-bottom:4px}
@@ -105,9 +106,9 @@ nav{position:sticky;top:0;z-index:100;padding:20px 0;backdrop-filter:blur(16px);
 .xp-tags{display:flex;flex-wrap:wrap;gap:8px}
 .xp-tag{background:var(--accent-dim);border:1px solid rgba(167,139,250,.15);color:var(--accent-light);font-size:12px;font-weight:500;padding:5px 12px;border-radius:100px}
 .xp-tag.blue{background:var(--sky-dim);border-color:rgba(34,211,238,.15);color:var(--sky)}
-.xp-img{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border-subtle);aspect-ratio:16/10}
-.xp-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease)}
-.xp-card:hover .xp-img img{transform:scale(1.04)}
+.xp-logo{display:flex;align-items:center;justify-content:center;border-radius:var(--radius);border:1px solid var(--border-subtle);background:var(--bg);padding:24px;aspect-ratio:16/10}
+.xp-logo img{max-width:100%;max-height:80px;object-fit:contain;filter:brightness(0) invert(1);opacity:.9}
+.xp-logo img.light{filter:none;opacity:1}
 
 /* ---------- CONTACT ---------- */
 .contact-card{background:var(--surface);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:48px;margin-top:28px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
@@ -151,8 +152,10 @@ footer{max-width:1080px;margin:0 auto;padding:0 24px 40px}
   .nav-links{display:none;position:fixed;top:72px;left:16px;right:16px;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px;z-index:99}
   .nav-links.open{display:flex}
   .mobile-toggle{display:flex;align-items:center;justify-content:center}
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .hero-image{order:-1}
   .xp-card{grid-template-columns:1fr}
-  .xp-img{display:none}
+  .xp-logo{display:none}
   .contact-card{grid-template-columns:1fr}
   .contact-cta{display:none}
   .sticker-zone{height:200px}
@@ -161,6 +164,7 @@ footer{max-width:1080px;margin:0 auto;padding:0 24px 40px}
   .skills-grid{grid-template-columns:1fr}
   .hero{padding:48px 0 24px}
   .section{margin-top:56px}
+  .hero-image img{width:180px;height:180px}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
@@ -186,25 +190,29 @@ footer{max-width:1080px;margin:0 auto;padding:0 24px 40px}
 <main id="top">
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-badge"><span class="dot"></span> available for work</div>
-    <h1>People call me<br><span class="accent">CalvinSkunnies</span><span class="dim">.</span></h1>
-    <p class="hero-sub">A few years turning raw data into dashboards, pipelines, and communities. Crypto research at <b>Reform DAO</b>, automating reports that cut SLA from 8h to 1, and building across <b>Monad</b> and <b>Edge Matrix Chain</b>.</p>
-    <div class="hero-role">currently a
-      <span class="flip">
-        <ul>
-          <li>Data Analyst</li>
-          <li>Research Analyst</li>
-          <li>Discord Moderator</li>
-          <li>Web3 Community Builder</li>
-        </ul>
-      </span>
-    </div>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#experience">View experience <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      <a class="btn btn-outline" href="#contact">Get in touch</a>
-    </div>
-    <div class="hero-image">
-      <img src="assets/hero.png" alt="CalvinSkunnies">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge"><span class="dot"></span> available for work</div>
+        <h1>People call me<br><span class="accent">CalvinSkunnies</span><span class="dim">.</span></h1>
+        <p class="hero-sub">A few years turning raw data into dashboards, pipelines, and communities. Crypto research at <b>Reform DAO</b>, automating reports that cut SLA from 8h to 1, and building across <b>Monad</b> and <b>Edge Matrix Chain</b>.</p>
+        <div class="hero-role">currently a
+          <span class="flip">
+            <ul>
+              <li>Data Analyst</li>
+              <li>Research Analyst</li>
+              <li>Discord Moderator</li>
+              <li>Web3 Community Builder</li>
+            </ul>
+          </span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#experience">View experience <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a class="btn btn-outline" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="assets/hero.png" alt="CalvinSkunnies">
+      </div>
     </div>
   </section>
 
@@ -258,7 +266,7 @@ footer{max-width:1080px;margin:0 auto;padding:0 24px 40px}
             <span class="xp-tag blue">real-time market health</span>
           </div>
         </div>
-        <div class="xp-img"><img src="assets/refund.png" alt="Reform DAO"></div>
+        <div class="xp-logo"><img src="assets/refund.png" alt="Reform DAO"></div>
       </div>
 
       <div class="xp-card reveal">
@@ -273,7 +281,7 @@ footer{max-width:1080px;margin:0 auto;padding:0 24px 40px}
             <span class="xp-tag blue">UAT delivery</span>
           </div>
         </div>
-        <div class="xp-img"><img src="assets/skunnies_header.jpg" alt="FWD Insurance"></div>
+        <div class="xp-logo"><img src="assets/fwd-logo.svg" alt="FWD Insurance" class="light"></div>
       </div>
 
       <div class="xp-card reveal">
@@ -288,7 +296,7 @@ footer{max-width:1080px;margin:0 auto;padding:0 24px 40px}
             <span class="xp-tag blue">market insights</span>
           </div>
         </div>
-        <div class="xp-img"><img src="assets/edge.jpg" alt="Shopee International"></div>
+        <div class="xp-logo"><img src="assets/skunnies_header.jpg" alt="Shopee International" class="light"></div>
       </div>
 
       <div class="xp-card reveal">
@@ -303,7 +311,7 @@ footer{max-width:1080px;margin:0 auto;padding:0 24px 40px}
             <span class="xp-tag blue">conflict resolution</span>
           </div>
         </div>
-        <div class="xp-img"><img src="assets/edge.jpg" alt="Edge Matrix Chain"></div>
+        <div class="xp-logo"><img src="assets/emc-logo.png" alt="Edge Matrix Chain" class="light"></div>
       </div>
 
       <div class="xp-card reveal">
@@ -318,7 +326,7 @@ footer{max-width:1080px;margin:0 auto;padding:0 24px 40px}
             <span class="xp-tag blue">ecosystem growth</span>
           </div>
         </div>
-        <div class="xp-img"><img src="assets/monad.jpg" alt="Monad"></div>
+        <div class="xp-logo"><img src="assets/monad.jpg" alt="Monad" class="light"></div>
       </div>
 
       <div class="xp-card reveal">
@@ -333,7 +341,7 @@ footer{max-width:1080px;margin:0 auto;padding:0 24px 40px}
             <span class="xp-tag blue">vesting streams</span>
           </div>
         </div>
-        <div class="xp-img"><img src="assets/refund.png" alt="SimplyVest"></div>
+        <div class="xp-logo"><img src="assets/simplyvest-logo.png" alt="SimplyVest" class="light"></div>
       </div>
 
     </div>
