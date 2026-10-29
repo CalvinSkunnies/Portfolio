@@ -1,0 +1,37 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/tdl",
+      "destination": "https://calvinskunniestdl.vercel.app/tdl"
+    },
+    {
+      "source": "/tdl/",
+      "destination": "https://calvinskunniestdl.vercel.app/tdl"
+    },
+    {
+      "source": "/tdl/:path*",
+      "destination": "https://calvinskunniestdl.vercel.app/tdl/:path*"
+    },
+    {
+      "source": "/_next/:path*",
+      "destination": "https://calvinskunniestdl.vercel.app/_next/:path*"
+    },
+    {
+      "source": "/sw.js",
+      "destination": "https://calvinskunniestdl.vercel.app/sw.js"
+    },
+    {
+      "source": "/offline.html",
+      "destination": "https://calvinskunniestdl.vercel.app/offline.html"
+    },
+    {
+      "source": "/manifest.webmanifest",
+      "destination": "https://calvinskunniestdl.vercel.app/manifest.webmanifest"
+    },
+    {
+      "source": "/icon.svg",
+      "destination": "https://calvinskunniestdl.vercel.app/icon.svg"
+    }
+  ]
+}
