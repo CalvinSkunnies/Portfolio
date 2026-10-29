@@ -14,6 +14,18 @@
       "destination": "https://calvinskunniestdl.vercel.app/tdl/:path*"
     },
     {
+      "source": "/tracker",
+      "destination": "https://calvinskunniestdl.vercel.app/tdl/tracker"
+    },
+    {
+      "source": "/login",
+      "destination": "https://calvinskunniestdl.vercel.app/tdl/login"
+    },
+    {
+      "source": "/design-system",
+      "destination": "https://calvinskunniestdl.vercel.app/tdl/design-system"
+    },
+    {
       "source": "/_next/:path*",
       "destination": "https://calvinskunniestdl.vercel.app/_next/:path*"
     },
