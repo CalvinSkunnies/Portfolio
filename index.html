@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CALVINSKUNNIES — PORTFOLIO</title>
+<meta name="theme-color" content="#04050a">
 <meta name="description" content="CalvinSkunnies — data analyst, research analyst, web3 community builder. Analytics, crypto markets, and the communities behind them.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎲</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,9 +13,9 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#09090b;--surface:#18181b;--surface-2:#27272a;
-  --border:#3f3f46;--border-subtle:#27272a;
-  --text:#fafafa;--text-muted:#a1a1aa;--text-dim:#71717a;
+  --bg:#04050a;--surface:#0c0f16;--surface-2:#141824;
+  --border:#2c3548;--border-subtle:#1c2230;
+  --text:#f2f5fa;--text-muted:#c9d1de;--text-dim:#8b94a7;
   --accent:#a78bfa;--accent-light:#c4b5fd;--accent-dim:rgba(167,139,250,.12);
   --sky:#22d3ee;--sky-dim:rgba(34,211,238,.1);
   --radius:16px;--radius-lg:24px;
@@ -27,7 +28,7 @@ body{
   font-size:16px;line-height:1.65;
   overflow-x:hidden;-webkit-font-smoothing:antialiased;
 }
-::selection{background:var(--accent);color:#09090b}
+::selection{background:var(--accent);color:#04050a}
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
@@ -40,7 +41,7 @@ body{
 main{max-width:1080px;margin:0 auto;padding:0 24px 80px}
 
 /* ---------- NAV ---------- */
-nav{position:sticky;top:0;z-index:100;padding:20px 0;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(9,9,11,.8);border-bottom:1px solid var(--border-subtle)}
+nav{position:sticky;top:0;z-index:100;padding:20px 0;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(4,5,10,.8);border-bottom:1px solid var(--border-subtle)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1080px;margin:0 auto;padding:0 24px}
 .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;letter-spacing:.08em;color:var(--text);text-decoration:none}
 .logo span{color:var(--accent)}
@@ -170,9 +171,15 @@ footer{max-width:1080px;margin:0 auto;padding:0 24px 40px}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
+
+/* ---------- AURORA (vanilla port of Componentry Aurora Flow, midnight) ---------- */
+#aurora{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1;opacity:.55}
+.kinetic-word{display:inline-block;opacity:0;transform:translateY(16px);filter:blur(4px);transition:opacity .6s var(--ease),transform .6s var(--ease),filter .6s var(--ease)}
+.kinetic-on .kinetic-word{opacity:1;transform:translateY(0);filter:blur(0)}
 </style>
 </head>
 <body>
+<canvas id="aurora" aria-hidden="true"></canvas>
 <div class="ambient"></div>
 
 <nav>
@@ -195,7 +202,7 @@ footer{max-width:1080px;margin:0 auto;padding:0 24px 40px}
     <div class="hero-grid">
       <div>
         <div class="hero-badge"><span class="dot"></span> available for work</div>
-        <h1>People call me<br><span class="accent">CalvinSkunnies</span><span class="dim">.</span></h1>
+        <h1 class="kinetic">People call me<br><span class="accent">CalvinSkunnies</span><span class="dim">.</span></h1>
         <p class="hero-sub">A few years turning raw data into dashboards, pipelines, and communities. Crypto research at <b>Reform DAO</b>, automating reports that cut SLA from 8h to 1, and building across <b>Monad</b> and <b>Edge Matrix Chain</b>.</p>
         <div class="hero-role">currently a
           <span class="flip">
@@ -449,6 +456,102 @@ document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',
 
 /* back to top */
 btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* aurora background — vanilla port of Componentry Aurora Flow (midnight preset).
+   Slow-drifting additive blobs on canvas 2D; one static frame when reduced
+   motion is requested, paused while the tab is hidden. The static .ambient
+   glows underneath remain as the no-JS fallback. */
+(function(){
+  var canvas=document.getElementById('aurora');
+  if(!canvas) return;
+  var ctx;
+  try{ ctx=canvas.getContext('2d'); }catch(e){ return; }
+  if(!ctx) return;
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DPR=Math.min(window.devicePixelRatio||1,1.5);
+  var W=0,H=0;
+  /* midnight palette + site accents */
+  var blobs=[
+    {c:'23,38,77',  x:.22,y:.18,r:.55,s:.00016,p:0},
+    {c:'48,77,127', x:.75,y:.12,r:.45,s:.00012,p:2},
+    {c:'168,198,239',x:.55,y:.75,r:.50,s:.00010,p:4},
+    {c:'167,139,250',x:.15,y:.80,r:.40,s:.00014,p:1},
+    {c:'34,211,238', x:.90,y:.60,r:.35,s:.00011,p:3}
+  ];
+  function resize(){
+    W=window.innerWidth; H=window.innerHeight;
+    canvas.width=Math.floor(W*DPR); canvas.height=Math.floor(H*DPR);
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  resize();
+  window.addEventListener('resize',resize);
+  function draw(t){
+    ctx.clearRect(0,0,W,H);
+    ctx.globalCompositeOperation='lighter';
+    for(var i=0;i<blobs.length;i++){
+      var b=blobs[i];
+      var cx=(b.x+Math.sin(t*b.s+b.p)*0.08)*W;
+      var cy=(b.y+Math.cos(t*b.s*0.8+b.p)*0.06)*H;
+      var r=b.r*Math.max(W,H)*0.55;
+      var g=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
+      g.addColorStop(0,'rgba('+b.c+',0.20)');
+      g.addColorStop(1,'rgba('+b.c+',0)');
+      ctx.fillStyle=g;
+      ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.fill();
+    }
+    ctx.globalCompositeOperation='source-over';
+  }
+  if(reduced){ draw(0); return; }
+  var running=true, raf=null;
+  function frame(t){ if(!running) return; draw(t||0); raf=requestAnimationFrame(frame); }
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden){ running=false; if(raf) cancelAnimationFrame(raf); }
+    else if(!running){ running=true; raf=requestAnimationFrame(frame); }
+  });
+  raf=requestAnimationFrame(frame);
+})();
+
+/* kinetic text reveal — vanilla port of Componentry Kinetic Text Reveal.
+   Splits the hero headline into words that rise 16px with a blur fade,
+   staggered 80ms apart. Skipped entirely under reduced motion. */
+(function(){
+  var h1=document.querySelector('.kinetic');
+  if(!h1) return;
+  /* aria-label from the text with <br> read as a space, so screen readers
+     hear "People call me CalvinSkunnies." rather than "meCalvinSkunnies". */
+  var labelClone=h1.cloneNode(true);
+  Array.prototype.slice.call(labelClone.querySelectorAll('br')).forEach(function(b){
+    b.parentNode.replaceChild(document.createTextNode(' '),b);
+  });
+  h1.setAttribute('aria-label',labelClone.textContent.replace(/\s+/g,' ').trim());
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var words=[];
+  Array.prototype.slice.call(h1.childNodes).forEach(function(node){
+    if(node.nodeType===3){
+      node.textContent.split(/\s+/).filter(Boolean).forEach(function(w){
+        words.push({text:w,cls:null});
+      });
+    }else if(node.nodeType===1){
+      if(node.tagName==='BR'){ words.push({br:true}); return; }
+      words.push({text:node.textContent,cls:node.className});
+    }
+  });
+  h1.innerHTML='';
+  var idx=0;
+  words.forEach(function(w){
+    if(w.br){ h1.appendChild(document.createElement('br')); return; }
+    var s=document.createElement('span');
+    s.className='kinetic-word'+(w.cls?' '+w.cls:'');
+    s.textContent=w.text;
+    s.style.transitionDelay=(idx*0.08)+'s';
+    h1.appendChild(s);
+    h1.appendChild(document.createTextNode(' '));
+    idx++;
+  });
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){ h1.classList.add('kinetic-on'); });
+  });
+})();
 </script>
 </body>
 </html>
