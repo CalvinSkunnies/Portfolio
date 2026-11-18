@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Reporting automation pipeline: sources, transform, scheduled report">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0b10"/>
+      <stop offset="1" stop-color="#14101f"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".035"/>
+    </pattern>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect width="1600" height="1000" fill="url(#grid)"/>
+  <circle cx="250" cy="180" r="260" fill="#a78bfa" opacity=".08" filter="url(#glow)"/>
+  <circle cx="1350" cy="840" r="240" fill="#22d3ee" opacity=".07" filter="url(#glow)"/>
+
+  <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+    <text x="120" y="170" fill="#a1a1aa" font-size="24" font-weight="600" letter-spacing="7">DATA IN, REPORT OUT</text>
+  </g>
+
+  <!-- connectors -->
+  <g stroke="url(#accent)" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M520 560 H640" stroke-dasharray="10 10"/>
+    <path d="M960 560 H1080" stroke-dasharray="10 10"/>
+  </g>
+  <g fill="#22d3ee">
+    <path d="M640 560 l-16 -10 v20 z"/>
+    <path d="M1080 560 l-16 -10 v20 z"/>
+  </g>
+
+  <!-- source card -->
+  <g>
+    <rect x="120" y="400" width="400" height="320" rx="22" fill="#18181b" stroke="#3f3f46"/>
+    <rect x="152" y="432" width="52" height="52" rx="12" fill="#a78bfa" opacity=".14"/>
+    <path d="M166 448h24M166 458h24M166 468h16" stroke="#c4b5fd" stroke-width="3" stroke-linecap="round"/>
+    <text x="224" y="462" fill="#fafafa" font-size="26" font-weight="600" font-family="Inter, sans-serif">Sources</text>
+    <text x="224" y="490" fill="#71717a" font-size="18" font-family="Inter, sans-serif">CSV · SQL · APIs</text>
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#a1a1aa">
+      <text x="152" y="560">date,channel,spend,revenue</text>
+      <text x="152" y="590">2026-11-01,search,420,1820</text>
+      <text x="152" y="620">2026-11-02,social,310,1410</text>
+      <text x="152" y="650">2026-11-03,email,90,980</text>
+    </g>
+    <rect x="152" y="676" width="132" height="26" rx="13" fill="#27272a"/>
+    <text x="166" y="695" fill="#a1a1aa" font-size="14" font-family="Inter, sans-serif">auto-ingest</text>
+  </g>
+
+  <!-- transform card -->
+  <g>
+    <rect x="660" y="430" width="280" height="260" rx="22" fill="#18181b" stroke="#a78bfa" stroke-opacity=".45"/>
+    <circle cx="800" cy="505" r="34" fill="#a78bfa" opacity=".14"/>
+    <path d="M786 505l10 10 20-22" stroke="#c4b5fd" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="800" y="578" fill="#fafafa" font-size="24" font-weight="600" text-anchor="middle" font-family="Inter, sans-serif">Transform</text>
+    <text x="800" y="606" fill="#71717a" font-size="17" text-anchor="middle" font-family="Inter, sans-serif">clean · join · validate</text>
+    <rect x="700" y="636" width="200" height="8" rx="4" fill="#27272a"/>
+    <rect x="700" y="636" width="148" height="8" rx="4" fill="url(#accent)"/>
+  </g>
+
+  <!-- report card -->
+  <g>
+    <rect x="1100" y="400" width="380" height="320" rx="22" fill="#18181b" stroke="#3f3f46"/>
+    <text x="1132" y="456" fill="#fafafa" font-size="24" font-weight="600" font-family="Inter, sans-serif">Weekly report</text>
+    <rect x="1132" y="474" width="96" height="26" rx="13" fill="#22d3ee" opacity=".14"/>
+    <text x="1148" y="493" fill="#67e8f9" font-size="14" font-family="Inter, sans-serif">scheduled</text>
+    <g stroke="#27272a" stroke-width="1">
+      <path d="M1132 530h316M1132 580h316M1132 630h316"/>
+    </g>
+    <path d="M1132 650 L1180 610 L1228 628 L1276 560 L1324 582 L1372 536 L1420 548 L1448 512" fill="none" stroke="#22d3ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="#22d3ee">
+      <circle cx="1180" cy="610" r="5"/><circle cx="1276" cy="560" r="5"/><circle cx="1372" cy="536" r="5"/><circle cx="1448" cy="512" r="5"/>
+    </g>
+    <text x="1132" y="692" fill="#71717a" font-size="16" font-family="Inter, sans-serif">Delivered to inbox + dashboard</text>
+  </g>
+</svg>

@@ -72,11 +72,19 @@ nav{position:sticky;top:0;z-index:100;padding:20px 0;backdrop-filter:blur(16px);
 .project-card:hover{border-color:var(--border);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.35)}
 .project-media{position:relative;aspect-ratio:16/10;background:var(--bg);border-bottom:1px solid var(--border-subtle);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .project-media img{width:100%;height:100%;object-fit:cover}
+.project-media.contain img{object-fit:contain}
+.project-media.shot{background:linear-gradient(160deg,#0c0f16,#141824)}
 .media-placeholder{display:none;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:100%;height:100%;text-align:center;padding:20px;color:var(--text-dim)}
 .media-placeholder span{font-size:13px;font-weight:600;color:var(--text-muted)}
 .media-placeholder small{font-size:11px;font-family:'Space Grotesk',sans-serif;letter-spacing:.02em}
 .project-body{padding:24px;display:flex;flex-direction:column;gap:12px;flex:1}
 .project-title{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.01em}
+.project-title a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:color .2s var(--ease)}
+.project-title a:hover{color:var(--accent-light)}
+.project-title svg{width:15px;height:15px;flex:none;opacity:.65;transition:opacity .2s var(--ease),transform .2s var(--ease)}
+.project-title a:hover svg{opacity:1;transform:translate(1px,-1px)}
+.project-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.project-index{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--text-dim);flex:none}
 .project-desc{color:var(--text-muted);font-size:14px;line-height:1.6;flex:1}
 .project-tags{display:flex;flex-wrap:wrap;gap:8px}
 .xp-tag{background:var(--accent-dim);border:1px solid rgba(167,139,250,.15);color:var(--accent-light);font-size:12px;font-weight:500;padding:5px 12px;border-radius:100px}
@@ -142,23 +150,21 @@ footer{max-width:1080px;margin:0 auto;padding:0 24px 40px}
   </header>
 
   <!-- ============================================================
-       PROJECTS — pictures live in assets/projects/ (1280x800).
-       To add a project: drop a 1280x800 cover in assets/projects/,
-       duplicate a .project-card block below, and write the
-       title/desc/tags. If an image is missing, a placeholder
-       with the expected path shows.
-       Covers are built from logos already in assets/ — see
-       make_covers.py to regenerate them.
+       PROJECTS — media lives in assets/projects/.
+       Screenshots use .project-media.contain so the full UI stays
+       visible; photos and covers use the default cover crop.
        ============================================================ -->
   <section class="projects-grid">
 
     <article class="project-card reveal">
-      <div class="project-media">
-        <img src="assets/projects/project-1.jpg" alt="SimplyVest — Solana token vesting protocol" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="media-placeholder"><span>SimplyVest image</span><small>assets/projects/project-1.jpg</small></div>
+      <div class="project-media contain shot">
+        <img src="assets/projects/simplyvest.jpg" alt="SimplyVest — tokenized equity vesting dashboard">
       </div>
       <div class="project-body">
-        <h3 class="project-title">SimplyVest</h3>
+        <div class="project-head">
+          <h3 class="project-title">SimplyVest</h3>
+          <span class="project-index">01</span>
+        </div>
         <p class="project-desc">Token vesting protocol on Solana I founded. PDA vaults with cliff, linear, and milestone streams, hardened by 147+ tests.</p>
         <div class="project-tags">
           <span class="xp-tag">Solana</span>
@@ -169,12 +175,14 @@ footer{max-width:1080px;margin:0 auto;padding:0 24px 40px}
     </article>
 
     <article class="project-card reveal" data-delay="1">
-      <div class="project-media">
-        <img src="assets/projects/project-2.jpg" alt="Reform DAO — market-health dashboards" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="media-placeholder"><span>Reform DAO image</span><small>assets/projects/project-2.jpg</small></div>
+      <div class="project-media contain shot">
+        <img src="assets/projects/market-health.jpg" alt="Market-health dashboards showing BTC and ETH price, RSI and ETF flows">
       </div>
       <div class="project-body">
-        <h3 class="project-title">Market-Health Dashboards</h3>
+        <div class="project-head">
+          <h3 class="project-title">Market-Health Dashboards</h3>
+          <span class="project-index">02</span>
+        </div>
         <p class="project-desc">Interactive dashboards tracking project performance and market health live, with automated data extraction across multiple exchanges. Built as a Research Analyst at Reform DAO.</p>
         <div class="project-tags">
           <span class="xp-tag">4 dashboards built</span>
@@ -185,12 +193,19 @@ footer{max-width:1080px;margin:0 auto;padding:0 24px 40px}
     </article>
 
     <article class="project-card reveal">
-      <div class="project-media">
-        <img src="assets/projects/project-3.jpg" alt="BNB Builder Sessions — Jakarta workshop" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="media-placeholder"><span>BNB Builder Sessions image</span><small>assets/projects/project-3.jpg</small></div>
+      <div class="project-media contain shot">
+        <img src="assets/projects/bnb-builder-sessions.jpg" alt="BNB Chain Builder Sessions Jakarta — community group photo">
       </div>
       <div class="project-body">
-        <h3 class="project-title">BNB Builder Sessions</h3>
+        <div class="project-head">
+          <h3 class="project-title">
+            <a href="https://x.com/Skunnies/status/2106653786416787688" target="_blank" rel="noopener noreferrer">
+              BNB Chain Builder Sessions
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </h3>
+          <span class="project-index">03</span>
+        </div>
         <p class="project-desc">Offline workshop I hosted in Jakarta as a BNB Chain Ambassador, helping builders turn ideas into real products, with technical insights and ecosystem updates.</p>
         <div class="project-tags">
           <span class="xp-tag">BNB Chain</span>
@@ -201,12 +216,19 @@ footer{max-width:1080px;margin:0 auto;padding:0 24px 40px}
     </article>
 
     <article class="project-card reveal" data-delay="1">
-      <div class="project-media">
-        <img src="assets/projects/project-4.jpg" alt="Reporting automation — SLA cut from 8 hours to 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="media-placeholder"><span>Reporting automation image</span><small>assets/projects/project-4.jpg</small></div>
+      <div class="project-media contain shot">
+        <img src="assets/projects/reporting-automation.svg" alt="Diagram of a reporting automation pipeline from data sources to a scheduled report">
       </div>
       <div class="project-body">
-        <h3 class="project-title">Reporting Automation</h3>
+        <div class="project-head">
+          <h3 class="project-title">
+            <a href="https://github.com/calvinskunnies/" target="_blank" rel="noopener noreferrer">
+              Reporting Automation
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </h3>
+          <span class="project-index">04</span>
+        </div>
         <p class="project-desc">GitHub Actions and AI agents that automate reporting end to end, cutting turnaround from 8 hours to 1.</p>
         <div class="project-tags">
           <span class="xp-tag">GitHub Actions</span>
